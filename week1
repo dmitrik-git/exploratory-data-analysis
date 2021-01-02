@@ -1,0 +1,28 @@
+https://github.com/DataScienceSpecialization/courses/
+
+Principle 1: show comparisons
+Principle 2: show causality, mechanism, explanation, systematic structure
+Principle 3: show multivariable data
+Principle 4: integration of evidence
+Principle 5: describe and document the evidence with labels, scales, sources etc.
+Principle 6: content is king
+
+1-dimensional plots:
+boxplot()
+hist()
+rug()
+abline()
+barplot()
+
+
+The base plotting system
+library(graphics) - plotting functions
+library (grDevices) - graphics devices like PDF, PostScript, PNG etc
+
+The lattice system
+library(lattice)
+
+state <- data.frame(state.x77, region = state.region)
+xyplot(Life.Exp ~ Income | region, data = state.layout = c(4, 1))
+
+The ggplot2 system
