@@ -5,10 +5,10 @@ xyplot(Ozone ~ Wind | as.factor(Month), data = airquality, layout = c(5,1))
 p <- xyplot(Ozone~Wind,data=airquality)
 print(p)
 
-names(p) 'list allproperties of an object
-p[["formula"]] 'value of a specific property
+names(p) #list allproperties of an object
+p[["formula"]] #value of a specific property
 
-Panels
+## Panels
 p <- xyplot(y ~ x | f, panel = function(x, y, ...) {
     panel.xyplot(x, y, ...)  ## First call the default panel function for 'xyplot'
     panel.abline(h = median(y), lty = 2)  ## Add a horizontal line at the median
