@@ -19,13 +19,9 @@ scc <- readRDS("./data/Source_Classification_Code.rds")
 nei.balt <- subset (nei, fips == "24510")
 
 # Prepare the data
-sumyears <- tapply(nei.balt$Emissions, nei.balt$year, sum)
-years <- names(sumyears)
-df <- data.frame(sumyears)
-df <- cbind (df, years)
-names(df) <- c("emissions","year")
+sumyears <- aggregate(Emissions ~ year, data = nei.balt, sum)
 
 # Plotting
 png(file = "plot2.png")
-barplot(emissions ~ year , data = df, col = "blue", main = "Total PM2.5 emission in Baltimore from all sources")
+barplot(Emissions ~ year , data = sumyears, col = "blue", main = "Total PM2.5 emission in Baltimore from all sources")
 dev.off()
