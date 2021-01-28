@@ -21,12 +21,18 @@ nei.motor <- subset (nei, type =="ON-ROAD" & (fips == "24510" | fips == "06037")
 
 
 # Prepare the data
-sumyears <- aggregate(Emissions ~ year+fips, data = nei.motor, sum)
+
+nei.motor$city <- nei.motor$fips
+nei.motor$city[nei.motor$city == "24510"] <- "Baltimore"
+nei.motor$city[nei.motor$city == "06037"] <- "Los Angeles"
+nei.motor$city <- as.factor(nei.motor$city)
+
+sumyears <- aggregate(Emissions ~ year+city, data = nei.motor, sum)
 
 
 # Plotting
 library(ggplot2)
 png(file = "plot6.png")
-g <- ggplot (sumyears, aes (year, Emissions, color = fips))
-g+geom_point()+geom_smooth(method = "lm")+facet_grid (. ~ fips)+ggtitle("Motor vehicle related emissions in Baltimore and LA")
+g <- ggplot (sumyears, aes (year, log10(Emissions), color = city))
+g+geom_point()+geom_smooth(method = "lm")+facet_grid (. ~ city)+ggtitle("Motor vehicle related emissions in Baltimore and LA")
 dev.off()
