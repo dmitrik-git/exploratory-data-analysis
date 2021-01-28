@@ -17,7 +17,7 @@ scc <- readRDS("./data/Source_Classification_Code.rds")
 
 # Coal related emissions
 motor <- scc[grep("Motor Vehicles", scc$Short.Name),1]
-nei.motor <- subset (nei, SCC %in% motor && fips == "24510")
+nei.motor <- subset (nei, type =="ON-ROAD" & fips == "24510")
 
 
 # Prepare the data
@@ -26,5 +26,5 @@ sumyears <- aggregate(Emissions ~ year, data = nei.motor, sum)
 
 # Plotting
 png(file = "plot5.png")
-barplot(Emissions ~ year , data = sumyears, col = "yellow")
+barplot(Emissions ~ year , data = sumyears, col = "yellow", main = "On-road emissions in Baltimore City")
 dev.off()
