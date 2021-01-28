@@ -27,5 +27,5 @@ sumyears <- aggregate(Emissions ~ year, data = nei.coal, sum)
 
 # Plotting
 png(file = "plot4.png")
-barplot(Emissions ~ year , data = sumyears, col = "green")
+barplot(Emissions ~ year , data = sumyears, col = "green", main = "Coal combustion-related emissions across the US")
 dev.off()
