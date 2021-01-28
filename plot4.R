@@ -17,7 +17,6 @@ scc <- readRDS("./data/Source_Classification_Code.rds")
 
 # Coal related emissions
 coal <- scc[grep("Coal", scc$EI.Sector),1]
-coal <- as.list(coal)
 nei.coal <- subset (nei, SCC %in% coal)
 
 

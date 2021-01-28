@@ -15,7 +15,7 @@ unzip("./data/data.zip", exdir = "./data/")
 nei <- readRDS("./data/summarySCC_PM25.rds")
 scc <- readRDS("./data/Source_Classification_Code.rds")
 
-# Coal related emissions
+# Motor vehicle related emissions
 motor <- scc[grep("Motor Vehicles", scc$Short.Name),1]
 nei.motor <- subset (nei, type =="ON-ROAD" & fips == "24510")
 
